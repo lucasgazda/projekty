@@ -1,0 +1,74 @@
+
+
+public class Druzyna {
+	
+//	Zaimplementuj klasê Dru¿yna o polach nazwa dru¿yny oraz liczba zdobytych punktów. 
+//	Przygotuj metody potrzebne do prawid³owego funkcjonowania klasy.
+	
+	private String nazwa;
+	private int liczbaPunktow;
+	
+	public String getNazwa() {
+		return nazwa;
+	}
+	
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
+	}
+	
+	public int getLiczbaPunktow() {
+		return liczbaPunktow;
+	}
+	
+	public void setLiczbaPunktow(int liczbaPunktow) {
+		this.liczbaPunktow = liczbaPunktow;
+	}
+
+	public Druzyna() {
+		
+	}
+
+	public Druzyna(String nazwa, int liczbaPunktow) {
+		this.nazwa = nazwa;
+		this.liczbaPunktow = liczbaPunktow;
+	}
+	
+	@Override
+		public String toString() {
+			String text = "";
+			text += "NAZWA = " + getNazwa() + "\n";
+			text += "LICZBA PUNKTOW = " + getLiczbaPunktow() + "\n";
+			return text;
+		}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + liczbaPunktow;
+		result = prime * result + ((nazwa == null) ? 0 : nazwa.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Druzyna other = (Druzyna) obj;
+		if (liczbaPunktow != other.liczbaPunktow)
+			return false;
+		if (nazwa == null) {
+			if (other.nazwa != null)
+				return false;
+		} else if (!nazwa.equals(other.nazwa))
+			return false;
+		return true;
+	}
+	
+	
+
+}

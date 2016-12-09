@@ -9,6 +9,8 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="G:\Programowanie\Git\DwieListy"/>
+			<item value="G:\Programowanie\Git\Urzadzenie"/>
 			<item value="G:\Programowanie\!Git\Czytelnik"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
