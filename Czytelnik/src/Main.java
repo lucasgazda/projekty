@@ -16,7 +16,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		Set<Czytelnik> listaCzytelnikow = new HashSet<>();
-		listaCzytelnikow.add(new Czytelnik("Lukasz", "Gazda", 33, 0.0));
+		listaCzytelnikow.add(new Czytelnik("Lukasz", "Pietruszka", 33, 0.0));
 		listaCzytelnikow.add(new Czytelnik("Jan", "Kowalski", 19, 0.0));
 		listaCzytelnikow.add(new Czytelnik("Ewa", "Pelczar", 15, 0.0));
 		listaCzytelnikow.add(new Czytelnik("Jerzy", "Czarniecki", 45, 0.0));
