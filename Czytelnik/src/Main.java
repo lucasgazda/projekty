@@ -14,7 +14,7 @@ public class Main {
 //	KM PROGRAMS		http://km-programs.pl/
 	
 	public static void main(String[] args) {
-
+		System.out.println("-------------------------");
 		Set<Czytelnik> listaCzytelnikow = new HashSet<>();
 		listaCzytelnikow.add(new Czytelnik("Lukasz", "Pietruszka", 33, 0.0));
 		listaCzytelnikow.add(new Czytelnik("Jan", "Kowalski", 19, 0.0));
