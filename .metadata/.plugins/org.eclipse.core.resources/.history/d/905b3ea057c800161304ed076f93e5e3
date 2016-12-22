@@ -77,6 +77,8 @@ public class Main {
 		
 		cl.statisticPriceCapacityMilage();
 		
+		cl.checkEquipment("ABS");
+		
 		System.out.println();
 		cl.maxPrice();
 		
