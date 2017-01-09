@@ -1,11 +1,13 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.LineNumberInputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import org.omg.Messaging.SyncScopeHelper;
+
 import java.util.Scanner;
 
 public class DataProcessing {
@@ -17,7 +19,7 @@ public class DataProcessing {
 		return mapDataProcessing;
 	}
 
-	public void addData(User user, Data data) {
+	public void addDataProcessing(User user, Data data) {
 		mapDataProcessing.put(user, data);
 	}
 
@@ -31,6 +33,7 @@ public class DataProcessing {
 	
 	public void filesManagement() {
 		Scanner sc = new Scanner(System.in);
+		
 		for(Entry<User, Data> e: mapDataProcessing.entrySet())
 		{
 			if(e.getKey().getRole() == "administrator")
@@ -38,32 +41,31 @@ public class DataProcessing {
 				String end = "";
 				do
 				{
-					try {
-						Map<String, String> listFiles = e.getValue().getMapaNapis();
-						
-						for(Entry<String, String> w: listFiles.entrySet())
-						{
-							System.out.println("FILE: " + w.getKey() + " CONTENT: " + w.getValue());
-						}
-						
-						System.out.println("Write file to change");
-						String fileChange = sc.nextLine();
-						String fileName = "G:\\Programowanie\\TxtFiles\\" + fileChange + ".txt";
-						File file = new File(fileName);
-						PrintWriter pw = new PrintWriter(file);
-						System.out.println("Write content to save");
-						String saveContent = sc.nextLine();
+					Map<String, String> fileAndContentList = e.getValue().getMapaNapis();
+					
+					fileAndContentList.forEach((k,v) -> {System.out.println("FILE:" + k + " " + "CONTENT:" + v);});
+					
+					String prefix = "G:\\Programowanie\\Git\\UserFiles\\";
+					String suffix = ".txt";
+					
+					System.out.println("Write file to change");
+					String fileChange = sc.nextLine();
+					String filePath = prefix + fileChange + suffix;
+					
+					System.out.println("Write content to save");
+					String saveContent = sc.nextLine();
+					
+					try(PrintWriter pw = new PrintWriter(new File(filePath)))
+					{			
 						pw.println(saveContent);
-						pw.close();
-						
-						System.out.println("End modification files Y/N");
-						end = sc.nextLine();
-						
+			
 					} catch (FileNotFoundException e1) {
 						e1.printStackTrace();
 					}
+					System.out.println("End modification files Y/N");
+					end = sc.nextLine();
 				}
-				while(!end.matches("Y"));
+				while(end.matches("N"));
 			}
 			else
 			{
@@ -71,11 +73,11 @@ public class DataProcessing {
 				String wordSearch = sc.nextLine();
 				int apperanceAmountWordSearch = 0;
 				
-				Map<String, String> temp = e.getValue().getMapaNapis();
+				Map<String, String> fileAndContentList = e.getValue().getMapaNapis();
 				
-				for(Entry<String, String> s: temp.entrySet())
+				for(Entry<String, String> map: fileAndContentList.entrySet())
 				{
-					if(s.getValue().matches(wordSearch))
+					if(map.getValue().matches(wordSearch))
 					{
 						apperanceAmountWordSearch++;
 					}

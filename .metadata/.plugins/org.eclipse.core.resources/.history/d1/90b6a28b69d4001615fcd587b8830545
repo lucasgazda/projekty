@@ -1,0 +1,64 @@
+//		KM PROGRAMS		http://km-programs.pl/
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class Main {
+	
+	public static Map<Device, Boolean> przegladUrzadzenia(Set<Device> u, Map<String, Integer> m) {
+		Map<Device, Boolean> listaPrzeglad = new HashMap<>();
+		
+		for(Device e: u) {
+			if(m.get(e.getDeviceClass()) < e.getTotalWorkingTime())
+			{
+				listaPrzeglad.put(e, true);
+			}
+			else
+			{
+				listaPrzeglad.put(e, false);
+			}
+		}
+		return listaPrzeglad;
+	}
+	
+	public static double kosztNaprawy(Map<Device, Boolean> m) {
+		double kosztNaprawy = 0;
+		for(Entry<Device, Boolean> e: m.entrySet())
+		{
+			if(e.getValue() == true)
+			{
+				kosztNaprawy += e.getKey().getDeviceReparingPrice();
+			}
+		}
+		return kosztNaprawy;
+	}
+
+	public static void main(String[] args) {
+
+		Set<Device> listaUrzadzen = new HashSet<>();
+		listaUrzadzen.add(new Device("Pralka", 120, "A", 100));
+		listaUrzadzen.add(new Device("Lodowka", 60, "D", 90));
+		listaUrzadzen.add(new Device("Mikrofala", 80, "C", 110));
+		listaUrzadzen.add(new Device("Plyta indukcyjna", 110, "B", 110));
+		listaUrzadzen.add(new Device("Kuchenka", 100, "A", 110));
+		listaUrzadzen.add(new Device("Piekarnik", 91, "B", 100));
+		listaUrzadzen.add(new Device("Zmywarka", 71, "C", 80));
+		
+		Map<String, Integer> wytyczneNaprawy = new HashMap<>();
+		wytyczneNaprawy.put("A", 110);
+		wytyczneNaprawy.put("B", 90);
+		wytyczneNaprawy.put("C", 70);
+		wytyczneNaprawy.put("D", 50);
+		
+		System.out.println(przegladUrzadzenia(listaUrzadzen, wytyczneNaprawy));
+		
+		System.out.println("--------------------------------------------------");
+		
+		System.out.println("Sumaryczny koszty naprawy urzadzenia wynosi " 
+							+ kosztNaprawy(przegladUrzadzenia(listaUrzadzen, wytyczneNaprawy)));
+	}
+
+}

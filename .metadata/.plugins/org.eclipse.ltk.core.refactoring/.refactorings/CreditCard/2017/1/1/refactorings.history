@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;lista&apos; in &apos;CreditCard.errorLoginCreditCard(...)&apos; to &apos;creditCardList&apos;&#x0D;&#x0A;- Original project: &apos;CreditCard&apos;&#x0D;&#x0A;- Original element: &apos;CreditCard.errorLoginCreditCard(List&lt;CreditCard&gt;).lista&apos;&#x0D;&#x0A;- Renamed element: &apos;lista&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;lista&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{CreditCard.java[CreditCard~errorLoginCreditCard~QList\&lt;QCreditCard;&gt;;@lista!1217!1238!1234!1238!QList\&lt;QCreditCard;&gt;;!0!true" name="creditCardList" references="true" stamp="1483730523324" version="1.0"/>
+</session>

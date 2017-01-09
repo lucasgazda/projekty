@@ -1,0 +1,21 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+//		KM PROGRAMS		http://km-programs.pl/
+
+		Window window = new Window(40, 20, 2);
+		
+		System.out.println(window);
+		
+		double glassPrice = 20;
+		double framePrice = 10;
+		
+		System.out.println("GLASS SURFACE " + window.calculateGlass());
+		System.out.println();
+		System.out.println("WINDOW PRICE " + window.windowPrice(glassPrice, framePrice));
+		
+	}
+
+}

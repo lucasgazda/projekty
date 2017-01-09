@@ -1,0 +1,58 @@
+//		KM PROGRAMS		http://km-programs.pl/
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+//		Zad 3 – User Pliki
+//		Przygotuj klasê User. Klasa zawiera w sobie pola opisuj¹ce u¿ytkownika,
+//		has³o oraz rolê (administrator lub user). Dla klasy nale¿y przewidzieæ
+//		metody zapewniaj¹ce jej poprawne dzia³anie. Przygotuj kolekcjê bez
+//		powtarzaj¹cych siê elementów, która przechowuje przyk³adowe obiekty
+//		klasy User.
+//		Nastêpnie przygotuj klasê Dane, która zawiera w sobie mapê. Kluczem
+//		mapy jest napis – nazwa pliku tekstowego, a wartoœci¹ napis zawieraj¹cy
+//		zawartoœæ tego pliku. Dla klasy nale¿y przewidzieæ metody zapewniaj¹ce
+//		jej poprawne dzia³anie. Mapa wype³niana jest za pomoc¹ konstruktora
+//		argumentowego, który dostaje jako argument kolekcjê z
+//		niepowtarzaj¹cymi siê nazwami plików tekstowych, z których nale¿y
+//		czytaæ dane.
+//		Klasa Przetwarzanie Danych zawiera w sobie mapê, której kluczem jest
+//		obiekt klasy User, natomiast wartoœci¹ obiekt klasy Dane. W klasie
+//		nale¿y przewidzieæ metodê dodaj¹c¹ do mapy kolejn¹ parê u¿ytkownik -
+//		dane. Ka¿da para oznacza u¿ytkownika, który postanowi³ przetwarzaæ
+//		dane plików tekstowych podanych jako wartoœæ w postaci obiektu klasy
+//		Dane. Kiedy u¿ytkownik jest administratorem mo¿e zmieniaæ zawartoœæ
+//		plików modyfikuj¹c wartoœci w mapie klasy. U¿ytkownik o zwyk³ych
+//		uprawnieniach mo¿e odczytaæ, ile razy w plikach wyst¹pi³ podany przez
+//		niego wzorzec. Na koniec wszystkie pliki, s¹ nadpisywane zmodyfikowan¹
+//		zawartoœci¹, o ile u¿ytkownik by³ administratorem. Na podstawie
+//		przedstawionego opisu przygotuj aplikacjê, która zasymuluje
+//		przyk³adowy scenariusz zarz¹dzania plikami.
+		
+		Set<User> userList = new HashSet<>();
+		userList.add(new User("Gosia", "las", "user"));
+		userList.add(new User("Lukasz", "zalas", "administrator"));
+		userList.add(new User("Zofia", "przylas", "user"));
+		userList.add(new User("Stanislaw", "przedlas", "user"));
+		userList.add(new User("Grzegorz", "dolas", "user"));
+		userList.add(new User("Jolanta", "odlas", "administrator"));
+		
+	
+		Set<String> fileList = new HashSet<>();
+		fileList.add("file_01");
+		fileList.add("file_02");
+		fileList.add("file_03");
+		
+		DataProcessing dataprocessing = new DataProcessing();
+		
+		dataprocessing.addDataProcessing(new User("Gosia", "las", "administrator"), new Data(fileList));
+		
+		dataprocessing.filesManagement();
+
+	}
+
+}

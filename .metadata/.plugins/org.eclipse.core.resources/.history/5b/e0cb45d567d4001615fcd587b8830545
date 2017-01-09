@@ -1,0 +1,119 @@
+
+public class Device {
+
+	private String nazwaUrzadzenia;
+	private int sumarycznyCzasPracy;
+	private String klasaUrzadznia;
+	private double kosztNaprawyUrzadzenia;
+	
+	
+	public String getNazwaUrzadzenia() {
+		return nazwaUrzadzenia;
+	}
+	
+	public void setNazwaUrzadzenia(String nazwaUrzadzenia) {
+		this.nazwaUrzadzenia = nazwaUrzadzenia;
+	}
+	
+	public int getSumarycznyCzasPracy() {
+		return sumarycznyCzasPracy;
+	}
+	
+	public void setSumarycznyCzasPracy(int sumarycznyCzasPracy) {
+		if(0 <= sumarycznyCzasPracy && sumarycznyCzasPracy <= 120)
+		{
+			this.sumarycznyCzasPracy = sumarycznyCzasPracy;
+		}
+		else
+		{
+			System.out.println("Nieprawidlowy czas pracy");
+			this.sumarycznyCzasPracy = 60;
+		}
+	}
+	
+	public String getKlasaUrzadznia() {
+		return klasaUrzadznia;
+	}
+	
+	public void setKlasaUrzadznia(String klasaUrzadznia) {
+		if(klasaUrzadznia.matches("(A|B|C|D)"))
+		{
+			this.klasaUrzadznia = klasaUrzadznia;
+		}
+		else
+		{
+			System.out.println("Nieprawidlowa klasa urzadzenia");
+			this.klasaUrzadznia = "A";
+		}
+	}
+	
+	public double getKosztNaprawyUrzadzenia() {
+		return kosztNaprawyUrzadzenia;
+	}
+	
+	public void setKosztNaprawyUrzadzenia(double kosztNaprawyUrzadzenia) {
+		this.kosztNaprawyUrzadzenia = kosztNaprawyUrzadzenia;
+	}
+
+	public Device() {
+		
+	}
+
+	public Device(String nazwaUrzadzenia, int sumarycznyCzasPracy, String klasaUrzadznia,
+						double kosztNaprawyUrzadzenia) {
+		this.nazwaUrzadzenia = nazwaUrzadzenia;
+		setSumarycznyCzasPracy(sumarycznyCzasPracy);
+		setKlasaUrzadznia(klasaUrzadznia);
+		this.kosztNaprawyUrzadzenia = kosztNaprawyUrzadzenia;
+	}
+	
+	@Override
+		public String toString() {
+			String text = "";
+			text += "\n" + "NAZWA URZADZENIA = " + getNazwaUrzadzenia() + "\n";
+			text += "SUMARYCZNY CZAS PRACY = " + getSumarycznyCzasPracy() + "\n";
+			text += "KLASA URZADZENIA = " + getKlasaUrzadznia() + "\n";
+			text += "KOSZT NAPRAWY URZADZENIA = " + getKosztNaprawyUrzadzenia() + "\n";
+			return text;
+		}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((klasaUrzadznia == null) ? 0 : klasaUrzadznia.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(kosztNaprawyUrzadzenia);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((nazwaUrzadzenia == null) ? 0 : nazwaUrzadzenia.hashCode());
+		result = prime * result + sumarycznyCzasPracy;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Device other = (Device) obj;
+		if (klasaUrzadznia == null) {
+			if (other.klasaUrzadznia != null)
+				return false;
+		} else if (!klasaUrzadznia.equals(other.klasaUrzadznia))
+			return false;
+		if (Double.doubleToLongBits(kosztNaprawyUrzadzenia) != Double.doubleToLongBits(other.kosztNaprawyUrzadzenia))
+			return false;
+		if (nazwaUrzadzenia == null) {
+			if (other.nazwaUrzadzenia != null)
+				return false;
+		} else if (!nazwaUrzadzenia.equals(other.nazwaUrzadzenia))
+			return false;
+		if (sumarycznyCzasPracy != other.sumarycznyCzasPracy)
+			return false;
+		return true;
+	}
+	
+}

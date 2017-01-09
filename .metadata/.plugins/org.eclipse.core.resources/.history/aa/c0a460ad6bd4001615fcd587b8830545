@@ -1,0 +1,145 @@
+
+public class Container {
+	
+	private String colour;
+	private double width;
+	private double lenght;
+	private double hight;
+	
+	
+	public String getKolor() {
+		return colour;
+	}
+	
+	public void setKolor(String kolor) {
+		if(kolor.matches("[A-Z][a-z]+"))
+		{
+			this.colour = kolor;
+		}
+		else
+		{
+			System.out.println("Nieprawidlowe dane wejscia");
+			this.colour = "Bialy";
+		}
+	}
+	
+	public double getSzerokosc() {
+		return width;
+	}
+	
+	public void setSzerokosc(double szerokosc) {
+		if(szerokosc >= 0)
+		{
+			this.width = szerokosc;
+		}
+		else
+		{
+			System.out.println("Szerokosc mniejsza od zero");
+			this.width = 5;
+		}
+	}
+	
+	public double getDlugosc() {
+		return lenght;
+	}
+	
+	public void setDlugosc(double dlugosc) {
+		if(dlugosc >= 0)
+		{
+			this.lenght = dlugosc;
+		}
+		else
+		{
+			System.out.println("Dlugosc mniejsza od zero");
+			this.lenght = 5;
+		}
+	}
+	
+	public double getWysokosc() {
+		return hight;
+	}
+	
+	public void setWysokosc(double wysokosc) {
+		if(wysokosc >= 0)
+		{
+			this.hight = wysokosc;
+		}
+		else
+		{
+			System.out.println("wysokosc mniejsza od zero");
+			this.hight = 5;
+		}
+	}
+
+	public Container() {
+		
+	}
+
+	public Container(String kolor, double szerokosc, double dlugosc, double wysokosc) {
+		setKolor(kolor);
+		setSzerokosc(szerokosc);
+		setDlugosc(dlugosc);
+		setWysokosc(wysokosc);
+	}
+	
+	public double obliczObjetosc(Container pojemnik) {
+		return pojemnik.getDlugosc() * pojemnik.getSzerokosc() * pojemnik.getWysokosc();
+	}
+	
+	public boolean czySubstancjaSieZmiesci(double objetosc, double objetoscPojemnika) {
+		if(objetosc == objetoscPojemnika)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+		public String toString() {
+			String text = "";
+			text += "KOLOR = " + colour + "\n";
+			text += "SZEROKOSC = " + width + "\n";
+			text += "DLUGOSC = " + lenght + "\n";
+			text += "WYSOKOSC = " + hight + "\n";
+			return text;
+		}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(lenght);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((colour == null) ? 0 : colour.hashCode());
+		temp = Double.doubleToLongBits(width);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(hight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Container other = (Container) obj;
+		if (Double.doubleToLongBits(lenght) != Double.doubleToLongBits(other.lenght))
+			return false;
+		if (colour == null) {
+			if (other.colour != null)
+				return false;
+		} else if (!colour.equals(other.colour))
+			return false;
+		if (Double.doubleToLongBits(width) != Double.doubleToLongBits(other.width))
+			return false;
+		if (Double.doubleToLongBits(hight) != Double.doubleToLongBits(other.hight))
+			return false;
+		return true;
+	}
+	
+}

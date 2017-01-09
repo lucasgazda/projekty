@@ -1,0 +1,64 @@
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import java.util.Set;
+
+
+public class Main {
+	
+//	KM PROGRAMS		http://km-programs.pl/
+	
+	public static void main(String[] args) {
+		System.out.println("-------------------------");
+		Set<Reader> listaCzytelnikow = new HashSet<>();
+		listaCzytelnikow.add(new Reader("Lukasz", "Pietruszka", 33, 0.0));
+		listaCzytelnikow.add(new Reader("Jan", "Kowalski", 19, 0.0));
+		listaCzytelnikow.add(new Reader("Ewa", "Pelczar", 15, 0.0));
+		listaCzytelnikow.add(new Reader("Jerzy", "Czarniecki", 45, 0.0));
+		
+		List<Reader> lCzytelnik = new ArrayList<>();
+		lCzytelnik.addAll(listaCzytelnikow);
+		
+		
+		Set<Book> listaKsiazka = new HashSet<>();
+		listaKsiazka.add(new Book("Chciwosc", "Pawel Reszka", 50));
+		listaKsiazka.add(new Book("Janko muzykant", "Henryk Sienkiewicz", 20));
+		listaKsiazka.add(new Book("Krzyzacy", "Henryk Sienkiewicz", 100));
+		listaKsiazka.add(new Book("Lalka", "Boleslaw Prus", 40));
+		listaKsiazka.add(new Book("Dym", "Maria Konopnicka", 60));
+		listaKsiazka.add(new Book("Antek", "Boleslaw Prus", 70));
+		listaKsiazka.add(new Book("W pustyni i w puszczy", "Henryk Sienkiewicz", 80));
+		listaKsiazka.add(new Book("Potop", "Henryk Sienkiewicz", 90));
+		
+		List<Book> lKsiazka = new ArrayList<>();
+		lKsiazka.addAll(listaKsiazka);
+		
+		List<Borrow> wypozyczenie = new ArrayList<>();
+		wypozyczenie.add(new Borrow(lCzytelnik.get(0), lKsiazka.get(0), "02-11-2016"));
+		wypozyczenie.add(new Borrow(lCzytelnik.get(0), lKsiazka.get(1), "02-11-2016"));
+		wypozyczenie.add(new Borrow(lCzytelnik.get(1), lKsiazka.get(2), "04-10-2016"));
+		wypozyczenie.add(new Borrow(lCzytelnik.get(1), lKsiazka.get(3), "25-10-2016"));
+		wypozyczenie.add(new Borrow(lCzytelnik.get(2), lKsiazka.get(4), "30-09-2016"));
+		wypozyczenie.add(new Borrow(lCzytelnik.get(2), lKsiazka.get(5), "01-08-2016"));
+		wypozyczenie.add(new Borrow(lCzytelnik.get(3), lKsiazka.get(6), "15-10-2016"));
+		wypozyczenie.add(new Borrow(lCzytelnik.get(3), lKsiazka.get(7), "29-10-2016"));		
+		
+		for(Borrow w: wypozyczenie) {
+			w.obliczKara(w);
+		}
+		
+		Map<Reader, Double> kara = new HashMap<>();
+		for (Reader c : listaCzytelnikow) {
+			kara.put(c, c.getWysokoscKary());
+		}
+		
+		for(Entry<Reader, Double> e: kara.entrySet()) {
+			System.out.println(e);
+		}
+	}
+}

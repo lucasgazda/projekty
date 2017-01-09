@@ -24,21 +24,21 @@ public class Data {
 	}
 
 	public Data(Set<String> listFile) {
-		for(String s: listFile)
+		for(String fileName: listFile)
 		{
-			try {
-				String fileName = "G:\\Programowanie\\Git\\UserFiles\\" + s + ".txt";
-				File file = new File(fileName);
-				Scanner sc = new Scanner(file);
-				
+			String prefix = "G:\\Programowanie\\Git\\UserFiles\\";
+			String suffix = ".txt";
+			String filePath = prefix + fileName + suffix;
+			
+			try(Scanner sc = new Scanner(new File(filePath)))
+			{
 				String wordFile = "";
 				while(sc.hasNextLine())
 				{
 					wordFile += sc.nextLine();
 				}
 				
-				mapWord.put(s, wordFile);
-				sc.close();
+				mapWord.put(fileName, wordFile);
 				
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
@@ -48,8 +48,7 @@ public class Data {
 	
 	@Override
 		public String toString() {
-			return mapWord.entrySet().stream().map(x -> x.getKey() + " " + x.getValue())
-														.collect(Collectors.joining("\n"));
+			return mapWord.entrySet().stream().map(x -> x.getKey() + " " + x.getValue()).collect(Collectors.joining("\n"));
 		}
 
 	@Override

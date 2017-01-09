@@ -1,0 +1,117 @@
+
+public class Window {
+	
+	private double totalWidth;
+	private double totalHeight;
+	private double frameWidth;
+	
+	
+	public double getTotalWidth() {
+		return totalWidth;
+	}
+	
+	public void setTotalWidth(double szerokoscCalkowita) {
+		if(szerokoscCalkowita > 0)
+		{
+			this.totalWidth = szerokoscCalkowita;
+		}
+		else
+		{
+			System.out.println("Wartosc mniejsza badz rowna zero");
+			this.totalWidth = 50;
+		}
+	}
+	
+	public double getWysokoscCalkowita() {
+		return totalHeight;
+	}
+	
+	public void setWysokoscCalkowita(double wysokoscCalkowita) {
+		if(wysokoscCalkowita > 0)
+		{
+			this.totalHeight = wysokoscCalkowita;
+		}
+		else
+		{
+			System.out.println("Wysokosc calkowita mniejsza badz rowna zero");
+			this.totalHeight = 80;
+		}
+	}
+	
+	public double getSzerokoscRamy() {
+		return frameWidth;
+	}
+	
+	public void setSzerokoscRamy(double szerokoscRamy) {
+		if((szerokoscRamy * 2) <= (getTotalWidth() * 0.1))
+		{
+			this.frameWidth = szerokoscRamy;
+		}
+		else
+		{
+			System.out.println("Szerokosc ramy wieksza od 10% szerokosci calkowitej");
+			this.frameWidth = 3;
+		}
+	}
+
+	public Window() {
+		
+	}
+
+	public Window(double szerokoscCalkowita, double wysokoscCalkowita, double szerokoscRamy) {
+		setTotalWidth(szerokoscCalkowita);
+		setWysokoscCalkowita(wysokoscCalkowita);
+		setSzerokoscRamy(szerokoscRamy);
+	}
+	
+	public double obliczSzyba() {
+		return (getTotalWidth() - (2 * getSzerokoscRamy())) * 
+				(getWysokoscCalkowita() - (2 * getSzerokoscRamy()));
+	}
+	
+	public double cenaOkna(double cenaRamy, double cenaSzyby) {
+		return (cenaSzyby * obliczSzyba()) + (cenaRamy * ((getTotalWidth() * 
+												getWysokoscCalkowita()) - obliczSzyba()));
+	}
+	
+	@Override
+		public String toString() {
+			String text = "";
+			text += "SZEROKOSC CALKOWITA = " + totalWidth + "\n";
+			text += "WYSOKOSC CALKOWITA = " + totalHeight + "\n";
+			text += "SZEROKOSC RAMY = " + frameWidth + "\n";
+			return text;
+		}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(totalWidth);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(frameWidth);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(totalHeight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Window other = (Window) obj;
+		if (Double.doubleToLongBits(totalWidth) != Double.doubleToLongBits(other.totalWidth))
+			return false;
+		if (Double.doubleToLongBits(frameWidth) != Double.doubleToLongBits(other.frameWidth))
+			return false;
+		if (Double.doubleToLongBits(totalHeight) != Double.doubleToLongBits(other.totalHeight))
+			return false;
+		return true;
+	}
+}

@@ -1,0 +1,91 @@
+
+public class Book {
+	
+	public String title;
+	private String author;
+	private double priceForProlongation;
+
+
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String tytul) {
+		this.title = tytul;
+	}
+	
+	public String getAutor() {
+		return author;
+	}
+
+	public void setAutor(String autor) {
+		this.author = autor;
+	}
+	
+	public double getCenaZaPrzedluzenieWypowiedzenia() {
+		return priceForProlongation;
+	}
+	
+	public void setCenaZaPrzedluzenieWypowiedzenia(double cenaZaPrzedluzenieWypowiedzenia) {
+		this.priceForProlongation = cenaZaPrzedluzenieWypowiedzenia;
+	}
+
+	public Book() {
+	
+	}
+
+	public Book(String tytul, String autor, double cenaZaPrzedluzenieWypowiedzenia) {
+		this.title = tytul;
+		this.author = autor;
+		this.priceForProlongation = cenaZaPrzedluzenieWypowiedzenia;
+	}
+	
+	@Override
+		public String toString() {
+			String text = "";
+			text += "\n";
+			text += "TYTUL = " + title + "\n";
+			text += "AUTOR = " + author + "\n";
+			text += "CENA ZA PRZEDLUZENIE WYPOZYCZENIA = " + priceForProlongation + "\n";
+		return text;
+		}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(priceForProlongation);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		if (author == null) {
+			if (other.author != null)
+				return false;
+		} else if (!author.equals(other.author))
+			return false;
+		if (Double.doubleToLongBits(priceForProlongation) != Double
+				.doubleToLongBits(other.priceForProlongation))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+}

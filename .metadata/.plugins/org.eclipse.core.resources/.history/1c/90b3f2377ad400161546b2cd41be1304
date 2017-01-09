@@ -1,0 +1,32 @@
+//		KM PROGRAMS		http://km-programs.pl/
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Set<User> userList = new HashSet<>();
+		userList.add(new User("Gosia", "las", "user"));
+		userList.add(new User("Lukasz", "zalas", "administrator"));
+		userList.add(new User("Zofia", "przylas", "user"));
+		userList.add(new User("Stanislaw", "przedlas", "user"));
+		userList.add(new User("Grzegorz", "dolas", "user"));
+		userList.add(new User("Jolanta", "odlas", "administrator"));
+		
+	
+		Set<String> fileList = new HashSet<>();
+		fileList.add("file_01");
+		fileList.add("file_02");
+		fileList.add("file_03");
+		
+		DataProcessing dataprocessing = new DataProcessing();
+		
+		dataprocessing.addData(new User("Gosia", "las", "administrator"), new Data(fileList));
+		
+		dataprocessing.filesManagement();
+
+	}
+
+}

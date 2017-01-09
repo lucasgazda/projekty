@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;temp&apos; in &apos;DataProcessing.filesManagement()&apos; to &apos;fileAndContentList&apos;&#x0D;&#x0A;- Original project: &apos;UserFiles&apos;&#x0D;&#x0A;- Original element: &apos;DataProcessing.filesManagement().temp&apos;&#x0D;&#x0A;- Renamed element: &apos;temp&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;temp&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;{DataProcessing.java[DataProcessing~filesManagement@temp!1933!1987!1953!1956!QMap\&lt;QString;QString;&gt;;!0!false" name="fileAndContentList" references="true" stamp="1484001470215" version="1.0"/>
+</session>

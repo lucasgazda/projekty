@@ -1,0 +1,48 @@
+
+public class Main {
+	
+	public static Container pojemnikMax(Container[] tab) {
+		double objetoscMax = 0;
+		Container pojemnik = new Container();
+		
+		for (int i = 0; i < tab.length; i++) {
+			
+			if(pojemnik.calculateCapacity(tab[i]) > objetoscMax)
+			{
+				pojemnik = tab[i];
+			}
+		}
+		
+		return pojemnik;
+	}
+	
+	
+
+	public static void main(String[] args) {
+		
+//		KM PROGRAMS		http://km-programs.pl/
+	
+		Container p1 = new Container("Szary", 5, 5, 5);
+		Container p2 = new Container("Czarny", 10, 12, 15); 
+		Container p3 = new Container("Czerwony", 4, 4, 40);
+		
+		Container[] tab = new Container[]{p1, p2, p3};
+		
+		double d = p1.calculateCapacity(new Container("Szary", 5, 5, 5));
+		
+		System.out.println("Objetosc pojemnika p1 to " + d);
+		
+		if(p1.ifSubstanceFit(126, d) == false)
+		{
+			System.out.println("Substancja nie zmiesci sie do pojemnika p1");
+		}
+		else
+		{
+			System.out.println("Substancja zmiesci sie do pojemnika p1");
+		}
+		
+		System.out.println("Pojmnik o najwiekszej objetosci to " + "\n" + pojemnikMax(tab));
+
+	}
+
+}

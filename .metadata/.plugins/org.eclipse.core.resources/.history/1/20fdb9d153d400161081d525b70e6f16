@@ -1,0 +1,21 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+//		KM PROGRAMS		http://km-programs.pl/
+
+		ConferenceRoom sk = new ConferenceRoom();
+		sk.addEvent(new Event("Dziady", 90, 200));
+		sk.addEvent(new Event("Krzyzacy", 150, 500));
+		sk.addEvent(new Event("Anielka", 60, 400));
+		sk.addEvent(new Event("Potop", 120, 300));
+		sk.addEvent(new Event("Ogniem i mieczem", 30, 100));
+		sk.addEvent(new Event("Janko muzykant", 80, 50));
+		
+		sk.deleteEvent();
+		
+		sk.statystyka();
+
+	}
+}

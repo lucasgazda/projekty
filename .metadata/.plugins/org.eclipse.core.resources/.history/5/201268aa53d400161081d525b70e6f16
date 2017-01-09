@@ -1,0 +1,21 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+//		KM PROGRAMS		http://km-programs.pl/
+
+		SalaKonferencyjna sk = new SalaKonferencyjna();
+		sk.dodajWydarzenie(new Wydarzenie("Dziady", 90, 200));
+		sk.dodajWydarzenie(new Wydarzenie("Krzyzacy", 150, 500));
+		sk.dodajWydarzenie(new Wydarzenie("Anielka", 60, 400));
+		sk.dodajWydarzenie(new Wydarzenie("Potop", 120, 300));
+		sk.dodajWydarzenie(new Wydarzenie("Ogniem i mieczem", 30, 100));
+		sk.dodajWydarzenie(new Wydarzenie("Janko muzykant", 80, 50));
+		
+		//sk.usunWydarzenie();
+		
+		sk.statystyka();
+
+	}
+}
